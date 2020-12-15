@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.WordBookList_Frag"
+    tools:context=".fragment.Noting2_Frag"
     android:background="#2196F3">
 
 
