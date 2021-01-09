@@ -13,7 +13,7 @@ interface WordBookDAO{
     @Query("SELECT * FROM wordbook_db WHERE id = :wordBookId")
     fun selectWordBookByID(wordBookId:Int):WordBook
 
-    @Query("SELECT COUNT(*) FROM card_db WHERE wordBookId = :wordBookId")
+    @Query("SELECT COUNT(*) FROM wordcard_db WHERE wordBookId = :wordBookId")
     fun countCards(wordBookId: Int):LiveData<Int>
 
     @Query("DELETE FROM wordbook_db WHERE id = :wordBookId")

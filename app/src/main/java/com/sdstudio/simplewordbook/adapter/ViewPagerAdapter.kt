@@ -25,4 +25,5 @@ class ViewPagerAdapter(fa: FragmentActivity, val wordBookListViewModel: WordBook
             else -> WordBookList_Frag(wordBookListViewModel)
         }
     }
+
 }

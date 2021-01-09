@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstudio.simplewordbook.R
@@ -26,21 +28,20 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
     ): View? {
         val view = inflater.inflate(R.layout.fragment_word_book_list_, container, false)
 
-        wordBookListAdapter = WordBookListAdapter(activity, this)
-        wordBookViewModel.wordBookList.observe(this,
-        Observer {
-            wordBooks -> wordBookListAdapter.setWordBook(wordBooks)
+        wordBookListAdapter = WordBookListAdapter(activity,this)
+        wordBookViewModel.wordBookList.observe(this, Observer {
+            wordBookListAdapter.setWordBook(it)
         })
 
-        viewManager = LinearLayoutManager(activity)
+        //viewManager = LinearLayoutManager(activity)
+        viewManager = GridLayoutManager(activity,2)
 
         recyclerView = view.recyclerview_wordList.apply {
-            //setHasFixedSize(true)
+            setHasFixedSize(true)
             adapter = wordBookListAdapter
             layoutManager = viewManager
-            addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+            //addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         }
-
         return view
     }
 }
