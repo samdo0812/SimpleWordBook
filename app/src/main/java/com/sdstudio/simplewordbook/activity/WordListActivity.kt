@@ -56,6 +56,7 @@ class WordListActivity : AppCompatActivity() {
         }
     }
 
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
