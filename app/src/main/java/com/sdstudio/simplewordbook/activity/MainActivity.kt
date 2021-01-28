@@ -1,13 +1,13 @@
 package com.sdstudio.simplewordbook.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.drawable.toDrawable
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -15,14 +15,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.ViewPagerAdapter
 import com.sdstudio.simplewordbook.database.WordBook
-import com.sdstudio.simplewordbook.fragment.Noting2_Frag
-import com.sdstudio.simplewordbook.fragment.Noting_Frag
-import com.sdstudio.simplewordbook.fragment.WordBookList_Frag
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
 import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_new_wordbooklist.view.*
-import java.security.acl.Owner
+import kotlinx.android.synthetic.main.fragment_translator_.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,5 +84,6 @@ class MainActivity : AppCompatActivity() {
                     dialog,i->
             }.show()
         }
+
     }
 }

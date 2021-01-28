@@ -34,4 +34,8 @@ class WordCardViewModel(application: Application, wordBookId:Int):AndroidViewMod
     fun delete(wordCardId: Int) = viewModelScope.launch {
         repo.delete(wordCardId)
     }
+    fun update(wordCardId: Int,front:String,back:String)= viewModelScope.launch{
+        repo.updateWordCard(wordCardId,front,back)
+    }
+
 }

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sdstudio.simplewordbook.fragment.Noting2_Frag
-import com.sdstudio.simplewordbook.fragment.Noting_Frag
+import com.sdstudio.simplewordbook.fragment.Translator_Frag
 import com.sdstudio.simplewordbook.fragment.WordBookList_Frag
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
 
@@ -20,7 +20,7 @@ class ViewPagerAdapter(fa: FragmentActivity, val wordBookListViewModel: WordBook
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> WordBookList_Frag(wordBookListViewModel)
-            1 -> Noting_Frag()
+            1 -> Translator_Frag()
             2 -> Noting2_Frag()
             else -> WordBookList_Frag(wordBookListViewModel)
         }

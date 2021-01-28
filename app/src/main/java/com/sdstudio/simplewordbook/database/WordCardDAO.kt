@@ -17,7 +17,7 @@ interface WordCardDAO{
     fun getCardsFromBook(wordBookId:Int):LiveData<List<WordCard>>
 
     @Query("DELETE FROM wordcard_db WHERE id = :wordcardId")
-    suspend fun deletCardById(wordcardId: Int)
+    suspend fun deleteCardById(wordcardId: Int)
 
     @Query("UPDATE wordcard_db SET front = :front, back = :back WHERE id = :id")
     suspend fun updateCard(id:Int, front:String, back:String)

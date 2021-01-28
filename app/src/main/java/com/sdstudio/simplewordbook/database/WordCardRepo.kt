@@ -32,6 +32,6 @@ class WordCardRepo(val wordCardDao: WordCardDAO, wordBookId:Int){
     }
 
     suspend fun delete(wordCardId: Int){
-        wordCardDao.deletCardById(wordCardId)
+        wordCardDao.deleteCardById(wordCardId)
     }
 }

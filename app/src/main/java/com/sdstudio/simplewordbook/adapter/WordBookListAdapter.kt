@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.activity.WordListActivity
+import com.sdstudio.simplewordbook.activity.WordPlayActivity
 import com.sdstudio.simplewordbook.database.WordBook
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
 import kotlinx.android.synthetic.main.dialog_new_wordbooklist.view.*
@@ -70,6 +71,12 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
                 parent.context.startActivity(intent.putExtra("wordBookId",data.id))
             }
 
+            dialog.show()
+
+            dialogView.button_play.setOnClickListener {
+                val intent = Intent(parent.context, WordPlayActivity::class.java)
+                parent.context.startActivity(intent.putExtra("wordBookId", data.id).putExtra("wordBookName", data.name))
+            }
             dialog.show()
         }
         return viewHolder

@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="단어추가하기"
-        android:id="@+id/addwordButton"/>
+        android:id="@+id/inputbutton"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
