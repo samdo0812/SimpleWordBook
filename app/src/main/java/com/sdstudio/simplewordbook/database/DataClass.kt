@@ -24,3 +24,7 @@ data class WordCard(@PrimaryKey(autoGenerate = true) val id:Long,
                 @ColumnInfo(name = "front") var front:String,
                 @ColumnInfo(name = "back") var back:String,
                 val wordBookId:Int)
+
+data class background(val image:Int){
+
+}

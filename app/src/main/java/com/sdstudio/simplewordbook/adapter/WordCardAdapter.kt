@@ -4,9 +4,11 @@ package com.sdstudio.simplewordbook.adapter
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.*
 import android.view.animation.AlphaAnimation
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat.startActivity
@@ -16,6 +18,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.awesomedialog.*
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.activity.WordListActivity
 import com.sdstudio.simplewordbook.activity.WorddetailActivity
@@ -33,12 +36,14 @@ import java.util.*
 //class WordCardAdapter(private val type: Int, private val update:(Boolean,Int,String,String)->Unit, private val delete:(Boolean,Int)->Unit) :
 //    RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
-class WordCardAdapter(private val type: Int, val wordBookId: Int) :
+class WordCardAdapter(private val type: Int) :
     RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
-    companion object{
+    companion object {
         var viewData: List<WordCard> = listOf()
+        lateinit var tts: TextToSpeech
     }
+
     var flipSet: BitSet = BitSet()  //BitSet Boolean보다 적은 메모리 차지
     var isAllFlip: Boolean = false
 
@@ -56,7 +61,7 @@ class WordCardAdapter(private val type: Int, val wordBookId: Int) :
         val viewHolder = ViewHolder(v, type)
         val curView = viewHolder.cardView   //v.cardview_card
         val curText = viewHolder.textView
-        // val curDelete = viewHolder.cardDelete
+        val curTts = viewHolder.ttsBtn
 
         when (type) {
             //터치시 단어 앞면 뒷면 회전
@@ -70,6 +75,12 @@ class WordCardAdapter(private val type: Int, val wordBookId: Int) :
                         curText.text = viewData[viewHolder.adapterPosition].front
                     }
                 }
+                curTts.setOnClickListener {
+                    Log.d("hi","tts")
+                    val tospeak = curText.text.toString()
+                    tts.speak(tospeak, TextToSpeech.QUEUE_FLUSH,null)
+                }
+
             }
         }
         return viewHolder
@@ -90,26 +101,8 @@ class WordCardAdapter(private val type: Int, val wordBookId: Int) :
             holder.textView.text = viewData[holder.adapterPosition].back
         } else {
             holder.textView.text = viewData[holder.adapterPosition].front
-            holder.cardNumber.text = viewData[holder.adapterPosition].id.toString()
+            //holder.cardNumber.text = viewData[holder.adapterPosition].id.toString()
         }
-
-      /*  var onEditMenu = object: MenuItem.OnMenuItemClickListener {
-            override fun onMenuItemClick(item:MenuItem):Boolean {
-                when (item.itemId) {
-                    101 -> {
-                        return true
-                    }
-                    102 -> {
-
-                        //wordCardViewModel.delete(viewData[holder.adapterPosition].id.toInt())
-                        return true
-                    }
-                }
-                return true
-            }
-        }*/
-
-
     }
 
 
@@ -117,63 +110,46 @@ class WordCardAdapter(private val type: Int, val wordBookId: Int) :
         View.OnCreateContextMenuListener {
         lateinit var textView: TextView
         lateinit var cardView: CardView
-        lateinit var cardNumber: TextView
-        companion object{
-            var wordCardId:Long = 0
+        lateinit var ttsBtn:ImageButton
+
+
+        companion object {
+            var wordCardId: Long = 0
         }
+
         init {
             when (type) {
                 0 -> {  //카드 등록
                     textView = v.textview_card_text
                     cardView = v.cardview_card
-                    cardNumber = v.text_position
+                    ttsBtn = v.tts
                     cardView.setOnCreateContextMenuListener(this)
 
                 }
                 1 -> {  //카드 플레이
                     textView = v.textview_play_card_text
                     cardView = v.cardview_play_card
+                    ttsBtn = v.tts_no
                 }
             }
+            tts = TextToSpeech(v.context, TextToSpeech.OnInitListener {
+                if (it != TextToSpeech.ERROR) {
+                    tts.language = Locale.UK
+                }
+            })
         }
+
 
         override fun onCreateContextMenu(
             menu: ContextMenu?,
             v: View?,
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
-            menu?.add(this.adapterPosition, 101, 0, "수정")
-            menu?.add(this.adapterPosition, 102, 1, "삭제")
-            //update?.setOnMenuItemClickListener(onEditMenu)
-            //delete?.setOnMenuItemClickListener(onEditMenu)
+
+            menu?.add(this.adapterPosition, 101, 0, "Modify")
+            menu?.add(this.adapterPosition, 102, 1, "Delete")
             wordCardId = viewData[adapterPosition].id
-            Log.d("wordCardId",wordCardId.toString())
-            Log.d("wordCardId","adapter")
-
-            //var intent = Intent(v?.context, WordListActivity::class.java)
-            //intent.putExtra("wordCardId", wordCardId)
         }
-
-
-        /*var onEditMenu = object : MenuItem.OnMenuItemClickListener {
-            override fun onMenuItemClick(item: MenuItem): Boolean {
-                when (item.itemId) {
-                    101 -> {
-                        return true
-                    }
-                    102 -> {
-
-                        var wordCardId = viewData[adapterPosition].id
-                        var intent = Intent(v.context, WordListActivity::class.java)
-                        Log.d("wordCardId",wordCardId.toString())
-                        Log.d("wordCardId","adapter")
-                        intent.putExtra("wordCardId", wordCardId)
-                        return true
-                    }
-                }
-                return true
-            }
-        }*/
     }
 
 

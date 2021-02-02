@@ -2,71 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/round"
     android:orientation="vertical">
 
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/edittext_new_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="WordBook Name"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/edittext_new_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Desc"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <View
+        android:id="@+id/divider18"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="?android:attr/listDivider" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Desc" />
-        </LinearLayout>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:background="?android:attr/listDivider" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:weightSum="2">
 
-            <EditText
-                android:id="@+id/edittext_new_name"
+            <Button
+                android:id="@+id/button_add"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="7dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="WordBook Name"
-                android:inputType="textPersonName"
-                android:textSize="24sp" />
+                android:background="@drawable/dialogbg"
+                android:text="ADD"
+                android:textColor="#ffffff" />
 
-           <EditText
-                android:id="@+id/edittext_new_desc"
+
+            <Button
+                android:id="@+id/button_cancle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="7dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="Description"
-                android:inputType="textPersonName"
-                android:textSize="24sp" />
+                android:background="@drawable/dialogbg"
+                android:text="CANCLE"
+                android:textColor="@android:color/holo_red_light" />
+
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_weight="1"
-        android:background="?android:attr/listDivider" />
 
 </LinearLayout>

@@ -1,10 +1,13 @@
 package com.sdstudio.simplewordbook.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -30,29 +33,19 @@ class WordListActivity : AppCompatActivity() {
     //var wordCardId: Long = 0
 
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //if(!isAddCardOpen)
-        menuInflater.inflate(R.menu.menu_card_list_flip, menu)
-        menuInflater.inflate(R.menu.menu_card_list_update, menu)
-        menuInflater.inflate(R.menu.menu_card_list_delete, menu)
-        return true
-    }
-
+    /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         menuInflater.inflate(R.menu.menu_back, menu)
+         return true
+     }*/
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_card_list_flip -> {
-                wordCardAdapter.flipAllCards()
+            android.R.id.home -> {
+                finish()
                 return true
             }
-            R.id.menu_card_list_update -> {
-                return false
-            }
-            R.id.menu_card_list_delete -> {
-                return false
-            }
+
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -62,10 +55,15 @@ class WordListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_word_list)
         setSupportActionBar(toolbar_card_list)
         supportActionBar?.title = "My Word"
-        //supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_flip_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_left)
+        fab_card.attachToRecyclerView(wordcard_list)
+
 
 
         wordBookId = intent.getIntExtra("wordBookId", 0)
+        val wordBookName = intent.getStringExtra("wordBookName")
+        supportActionBar?.title = wordBookName
 
         wordCardViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -74,7 +72,7 @@ class WordListActivity : AppCompatActivity() {
         })
             .get(WordCardViewModel::class.java)
 
-        wordCardAdapter = WordCardAdapter(0, wordBookId)
+        wordCardAdapter = WordCardAdapter(0)
         viewManager = LinearLayoutManager(applicationContext)
 
         wordCardViewModel.cardList.observe(this,
@@ -95,24 +93,25 @@ class WordListActivity : AppCompatActivity() {
             startActivityForResult(intent, 100)
 
         }
+
+
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
 
-       var wordCardId =  WordCardAdapter.ViewHolder.wordCardId
-        Log.d("wordCardId",wordCardId.toString())
+        var wordCardId = WordCardAdapter.ViewHolder.wordCardId
 
         when (item.itemId) {
             101 -> {
                 var intent = Intent(applicationContext, WorddetailActivity::class.java)
                 intent.putExtra("wordBookId", wordBookId)
-                intent.putExtra("wordCardId",wordCardId)
+                intent.putExtra("wordCardId", wordCardId)
                 startActivityForResult(intent, 101)
                 return true
             }
             102 -> {
-                Log.d("wordCardId","activity")
-                Log.d("wordCardId",wordCardId.toInt().toString())
+                Log.d("wordCardId", "activity")
+                Log.d("wordCardId", wordCardId.toInt().toString())
                 wordCardViewModel.delete(wordCardId.toInt())
                 return true
             }
@@ -122,24 +121,24 @@ class WordListActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
 
-                when (requestCode) {
                 //추가
-                100->{
+                100 -> {
                     var word = data!!.getStringExtra("word")
                     var mean = data!!.getStringExtra("mean")
                     wordCardViewModel.insert(WordCard(0, word, mean, wordBookId))
                 }
-                    //수정
-                101->{
+                //수정
+                101 -> {
                     var word = data!!.getStringExtra("word")
                     var mean = data!!.getStringExtra("mean")
-                    var wordCardId = data!!.getLongExtra("wordCardId",0)
+                    var wordCardId = data!!.getLongExtra("wordCardId", 0)
 
-                    wordCardViewModel.update(wordCardId.toInt(),word,mean)
+                    wordCardViewModel.update(wordCardId.toInt(), word, mean)
                 }
             }
+        }
     }
-
-
 }

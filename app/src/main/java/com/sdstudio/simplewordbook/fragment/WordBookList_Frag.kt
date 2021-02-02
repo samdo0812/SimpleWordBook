@@ -1,20 +1,20 @@
 package com.sdstudio.simplewordbook.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.WordBookListAdapter
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
+import kotlinx.android.synthetic.main.fragment_word_book_list_.*
 import kotlinx.android.synthetic.main.fragment_word_book_list_.view.*
+import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
 
 class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment() {
 
@@ -33,8 +33,18 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
             wordBookListAdapter.setWordBook(it)
         })
 
-        //viewManager = LinearLayoutManager(activity)
-        viewManager = GridLayoutManager(activity,2)
+
+        //viewManager = GridLayoutManager(activity,2)
+        //viewManager = SkidRightLayoutManager(5F, 1F)
+
+        val linearLayoutManager = ZoomRecyclerLayout(view.context)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        linearLayoutManager.reverseLayout = true
+        linearLayoutManager.stackFromEnd = true
+        viewManager = linearLayoutManager
+
+      //  val content = wordbooklist_title.text.toString()
+
 
         recyclerView = view.recyclerview_wordList.apply {
             setHasFixedSize(true)

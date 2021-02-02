@@ -24,14 +24,14 @@
         android:clickable="true">
 
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:textSize="35dp"
             android:id="@+id/text_position"
             />
-
+-->
 
         <TextView
             android:textColor="#ffffff"
@@ -43,12 +43,13 @@
             android:textSize="35sp"/>
 
         <ImageButton
+            android:layout_margin="15dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:background="@drawable/ic_baseline_delete_24"
-            android:id="@+id/text_delete"
+            android:background="@drawable/ic_baseline_volume_up_24"
+            android:id="@+id/tts"
             />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

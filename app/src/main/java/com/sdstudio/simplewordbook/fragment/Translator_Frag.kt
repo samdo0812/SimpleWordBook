@@ -296,8 +296,8 @@ class Translator_Frag : Fragment() {
 
                 val body = RequestBody.create(JSON, json.toString())
                 val request = Request.Builder()
-                    .header("KEY","KEYVALUE")
-                    .addHeader("KEY", "KEYVALUE")
+                    .header("X-Naver-Client-Id", "value")
+                    .addHeader("X-Naver-Client-Secret", "value")
                     .url(url)
                     .post(body)
                     .build()

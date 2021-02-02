@@ -1,119 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/round"
     android:orientation="vertical">
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textview1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Name" />
-
-            <View
-                android:id="@+id/divider15"
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:id="@+id/textview_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textview2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Desc" />
-
-            <View
-                android:id="@+id/divider16"
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:id="@+id/textview_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textview3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Size" />
-
-            <View
-                android:id="@+id/divider17"
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:id="@+id/textview_size"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </TableRow>
-    </TableLayout>
-
-    <View
-        android:id="@+id/divider18"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="?android:attr/listDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="3">
 
-        <Button
-            android:id="@+id/button_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Delete"
-            android:textColor="@android:color/holo_red_light"/>
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
 
-        <Button
-            android:id="@+id/button_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/textview1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Name" />
+
+       <!--     <View
+                android:id="@+id/divider15"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />-->
+
+            <TextView
+                android:id="@+id/textview_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textFontWeight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="Edit"/>
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
 
-        <Button
-            android:id="@+id/button_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Desc" />
+
+<!--            <View
+                android:id="@+id/divider16"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />-->
+
+            <TextView
+                android:id="@+id/textview_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Play"/>
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
 
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Size" />
+
+ <!--           <View
+                android:id="@+id/divider17"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+-->
+            <TextView
+                android:id="@+id/textview_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider18"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:weightSum="3"
+         android:layout_margin="20dp"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
+
+         <Button
+             android:id="@+id/button_edit"
+             android:layout_margin="7dp"
+             android:textColor="#ffffff"
+             android:background="@drawable/dialogbg"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1"
+             android:text="Edit"/>
+
+         <Button
+             android:id="@+id/button_play"
+             android:layout_margin="7dp"
+             android:textColor="#ffffff"
+             android:background="@drawable/dialogbg"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1"
+             android:text="Play"/>
+
+         <Button
+             android:id="@+id/button_delete"
+             android:layout_margin="7dp"
+             android:background="@drawable/dialogbg"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1"
+             android:text="Delete"
+             android:textColor="@android:color/holo_red_light"/>
+
+     </LinearLayout>
 </LinearLayout>

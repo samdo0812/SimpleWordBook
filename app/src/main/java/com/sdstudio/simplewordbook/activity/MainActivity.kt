@@ -3,8 +3,12 @@ package com.sdstudio.simplewordbook.activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -71,9 +75,27 @@ class MainActivity : AppCompatActivity() {
         //버튼
         wordlistFab = fab_main
         wordlistFab.setOnClickListener{
-            val dialog = AlertDialog.Builder(this)
-            val dialogView = layoutInflater.inflate(R.layout.dialog_new_wordbooklist,null)
-            dialog.setView(dialogView).setPositiveButton("OK") {
+           // val dialog = AlertDialog.Builder(this)
+            //val dialogView = layoutInflater.inflate(R.layout.dialog_new_wordbooklist,null)
+            //dialog.setView(dialogView).show()
+
+            val mDialog = LayoutInflater.from(this).inflate(R.layout.dialog_new_wordbooklist, null)
+            val mbuilder = AlertDialog.Builder(this).setView(mDialog)
+            val myAlertDialog = mbuilder.show()
+            myAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            mDialog.button_add.setOnClickListener {
+                val wordBook = WordBook(0,
+                mDialog.edittext_new_name.text.toString(),
+                mDialog.edittext_new_desc.text.toString(),0)
+                wordBookListViewModel.insert(wordBook)
+                myAlertDialog.dismiss()
+            }
+            mDialog.button_cancle.setOnClickListener {
+                myAlertDialog.dismiss()
+            }
+
+            /*dialog.setView(dialogView).setPositiveButton("OK") {
                     dialog,i->
                 val wordBook = WordBook(0,
                     dialogView.edittext_new_name.text.toString(),
@@ -82,8 +104,7 @@ class MainActivity : AppCompatActivity() {
 
             }.setNegativeButton("Cancel"){
                     dialog,i->
-            }.show()
+            }.show()*/
         }
-
     }
 }

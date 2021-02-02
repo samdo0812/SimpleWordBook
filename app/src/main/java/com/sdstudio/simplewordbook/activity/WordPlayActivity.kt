@@ -3,6 +3,8 @@ package com.sdstudio.simplewordbook.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.SyncStateContract.Helpers.update
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -11,6 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.WordCardAdapter
 import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
+import kotlinx.android.synthetic.main.activity_word_list.*
 import kotlinx.android.synthetic.main.activity_word_play.*
 import kotlinx.android.synthetic.main.activity_word_play.view.*
 import kotlinx.android.synthetic.main.activity_word_play.viewpager2_deck_play
@@ -22,16 +25,33 @@ class WordPlayActivity : AppCompatActivity() {
     private lateinit var wordCardAdapter: WordCardAdapter
     var isAllFlip = false
 
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_word_play)
+        setSupportActionBar(toolbar_wordcard_play)
+        supportActionBar?.title = "My Card Play"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_left)
+
 
         val wordBookId = intent.getIntExtra("wordBookId",0)
         val wordBookName = intent.getStringExtra("wordBookName")
         supportActionBar?.title = wordBookName
 
         //wordCardAdapter = WordCardAdapter(seekbar_deck_play,1)
-       //wordCardAdapter = WordCardAdapter(1)
+       wordCardAdapter = WordCardAdapter(1)
 
         wordCardViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
