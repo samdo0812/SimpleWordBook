@@ -1,9 +1,6 @@
 package com.sdstudio.simplewordbook.adapter
 
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.*
@@ -11,16 +8,8 @@ import android.view.animation.AlphaAnimation
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityCompat.startActivity
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.awesomedialog.*
 import com.sdstudio.simplewordbook.R
-import com.sdstudio.simplewordbook.activity.WordListActivity
 import com.sdstudio.simplewordbook.activity.WorddetailActivity
 import com.sdstudio.simplewordbook.database.WordCard
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
@@ -36,7 +25,7 @@ import java.util.*
 //class WordCardAdapter(private val type: Int, private val update:(Boolean,Int,String,String)->Unit, private val delete:(Boolean,Int)->Unit) :
 //    RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
-class WordCardAdapter(private val type: Int) :
+class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
     RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
     companion object {
@@ -58,11 +47,10 @@ class WordCardAdapter(private val type: Int) :
                 .inflate(R.layout.item_wordplay, parent, false)
         }
 
-        val viewHolder = ViewHolder(v, type)
+        val viewHolder = ViewHolder(v, type, ttsFlg)
         val curView = viewHolder.cardView   //v.cardview_card
         val curText = viewHolder.textView
         val curTts = viewHolder.ttsBtn
-
         when (type) {
             //터치시 단어 앞면 뒷면 회전
             0 -> {
@@ -76,7 +64,6 @@ class WordCardAdapter(private val type: Int) :
                     }
                 }
                 curTts.setOnClickListener {
-                    Log.d("hi","tts")
                     val tospeak = curText.text.toString()
                     tts.speak(tospeak, TextToSpeech.QUEUE_FLUSH,null)
                 }
@@ -106,12 +93,11 @@ class WordCardAdapter(private val type: Int) :
     }
 
 
-    class ViewHolder(v: View, type: Int) : RecyclerView.ViewHolder(v),
+    class ViewHolder(v: View, type: Int, ttsFlg: Int) : RecyclerView.ViewHolder(v),
         View.OnCreateContextMenuListener {
         lateinit var textView: TextView
         lateinit var cardView: CardView
         lateinit var ttsBtn:ImageButton
-
 
         companion object {
             var wordCardId: Long = 0
@@ -132,9 +118,18 @@ class WordCardAdapter(private val type: Int) :
                     ttsBtn = v.tts_no
                 }
             }
+            Log.d("setting",ttsFlg.toString())
             tts = TextToSpeech(v.context, TextToSpeech.OnInitListener {
                 if (it != TextToSpeech.ERROR) {
-                    tts.language = Locale.UK
+                    if (ttsFlg == 0){
+                        tts.language = Locale.KOREAN
+                    }
+                    else if (ttsFlg == 1){
+                        tts.language = Locale.UK
+                    }
+                    else{
+                        tts.language = Locale.UK
+                    }
                 }
             })
         }

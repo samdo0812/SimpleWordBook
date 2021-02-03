@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.WordBookListAdapter
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
@@ -39,8 +41,8 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
 
         val linearLayoutManager = ZoomRecyclerLayout(view.context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        linearLayoutManager.reverseLayout = true
-        linearLayoutManager.stackFromEnd = true
+        //linearLayoutManager.reverseLayout = true
+        //linearLayoutManager.stackFromEnd = true
         viewManager = linearLayoutManager
 
       //  val content = wordbooklist_title.text.toString()
@@ -52,6 +54,10 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
             layoutManager = viewManager
             //addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         }
+
+
+
+
         return view
     }
 }

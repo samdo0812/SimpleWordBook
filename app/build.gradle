@@ -36,6 +36,8 @@ allprojects {
         //리사이클러뷰
         //maven { url 'https://jitpack.io' }
         maven { url 'https://jitpack.io' }
+
+        google()
     }
 }
 
@@ -77,6 +79,8 @@ dependencies {
     //gson
     implementation 'com.google.code.gson:gson:2.8.6'
 
+    //설정
+    implementation 'androidx.preference:preference:1.1.0-alpha01'
 
     //ui뷰 라이브러리
     //dialog
@@ -90,5 +94,8 @@ dependencies {
     //리사이클러
     //implementation 'com.github.DingMouRen:LayoutManagerGroup:1e6f4f96eb'
     implementation 'com.github.Spikeysanju:ZoomRecylerLayout:1.0'
+
+    //admob
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
 
 }

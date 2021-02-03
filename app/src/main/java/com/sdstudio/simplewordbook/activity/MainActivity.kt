@@ -7,12 +7,17 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -106,5 +111,19 @@ class MainActivity : AppCompatActivity() {
                     dialog,i->
             }.show()*/
         }
+
+
+
+
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        //광고로드
+        banner.loadAd(adRequest)
+
+        val adView = AdView(this)
+        adView.adSize = AdSize.SMART_BANNER
+
+
     }
+
 }

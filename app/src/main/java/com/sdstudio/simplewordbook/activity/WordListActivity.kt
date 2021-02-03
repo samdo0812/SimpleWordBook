@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,18 +32,24 @@ class WordListActivity : AppCompatActivity() {
     private lateinit var wordCardAdapter: WordCardAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
     //var wordCardId: Long = 0
+    var ttsIntFlg:Int = 0
 
-
-    /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-         menuInflater.inflate(R.menu.menu_back, menu)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         menuInflater.inflate(R.menu.menu_card_list_add, menu)
          return true
-     }*/
+     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
+                return true
+            }
+            R.id.menu_card_list_update ->{
+                var intent = Intent(applicationContext, WorddetailActivity::class.java)
+                intent.putExtra("wordBookId", wordBookId)
+                startActivityForResult(intent, 100)
                 return true
             }
 
@@ -57,10 +64,10 @@ class WordListActivity : AppCompatActivity() {
         supportActionBar?.title = "My Word"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back_left)
-        fab_card.attachToRecyclerView(wordcard_list)
+       // fab_card.attachToRecyclerView(wordcard_list)
 
 
-
+        setting()
         wordBookId = intent.getIntExtra("wordBookId", 0)
         val wordBookName = intent.getStringExtra("wordBookName")
         supportActionBar?.title = wordBookName
@@ -72,7 +79,7 @@ class WordListActivity : AppCompatActivity() {
         })
             .get(WordCardViewModel::class.java)
 
-        wordCardAdapter = WordCardAdapter(0)
+        wordCardAdapter = WordCardAdapter(0,ttsIntFlg)
         viewManager = LinearLayoutManager(applicationContext)
 
         wordCardViewModel.cardList.observe(this,
@@ -87,14 +94,20 @@ class WordListActivity : AppCompatActivity() {
 
         }
 
-        fab_card.setOnClickListener {
-            var intent = Intent(applicationContext, WorddetailActivity::class.java)
-            intent.putExtra("wordBookId", wordBookId)
-            startActivityForResult(intent, 100)
 
+    }
+
+    fun setting(){
+        val t =PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val ttsFlg = t.getString("language_tts","")
+        Log.d("setting",ttsFlg)
+        when(ttsFlg){
+            "KOREA"->{ ttsIntFlg = 0 }
+            "ENGLISH(UK)"->{ ttsIntFlg = 1}
+            "ENGLISH(US)"->{ttsIntFlg = 2}
+            "JAPAN"->{ttsIntFlg = 3}
+            "CHINA"->{ttsIntFlg = 4}
         }
-
-
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {

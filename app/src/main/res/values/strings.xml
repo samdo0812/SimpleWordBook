@@ -22,6 +22,21 @@
         <item>한국어(ko)</item>
     </string-array>
 
+    <string-array name="tran_ko2">
+        <item>독일어(de)</item>
+        <item>러시아(ru)</item>
+        <item>베트남어(vi)</item>
+        <item>스페인어(es)</item>
+        <item>영어(en)</item>
+        <item>인도네시아(id)</item>
+        <item>이탈리아어(it)</item>
+        <item>일본어(ja)</item>
+        <item>중국어 간체(zh-CN)</item>
+        <item>중국어 번체(zh-TW)</item>
+        <item>태국어(th)</item>
+        <item>프랑스어(fr)</item>
+    </string-array>
+
     <string-array name="tran_en">
         <item>일본어(ja)</item>
         <item>중국어 간체(zh-CN)</item>
@@ -58,4 +73,5 @@
     <string name="wordlist_title"><b>Create your word book!</b></string>
     <string name="wordlist_title_sub"><i>Slide and choose your word book.</i></string>
     <string name="worddetail_title"><b>You can add or modify word.</b></string>
+
 </resources>

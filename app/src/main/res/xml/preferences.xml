@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Functions"
+        app:iconSpaceReserved="false">
+    <SwitchPreference
+        android:title="스위치"
+        />
+    <ListPreference
+        android:key="language_tts"
+        android:title="언어설정"
+        android:entries="@array/language_tts"
+        android:entryValues="@array/language_tts"
+        />
+    </PreferenceCategory>
+
+</PreferenceScreen>

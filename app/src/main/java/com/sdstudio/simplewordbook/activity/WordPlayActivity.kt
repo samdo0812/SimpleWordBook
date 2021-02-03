@@ -51,7 +51,7 @@ class WordPlayActivity : AppCompatActivity() {
         supportActionBar?.title = wordBookName
 
         //wordCardAdapter = WordCardAdapter(seekbar_deck_play,1)
-       wordCardAdapter = WordCardAdapter(1)
+        wordCardAdapter = WordCardAdapter(1,0)
 
         wordCardViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
