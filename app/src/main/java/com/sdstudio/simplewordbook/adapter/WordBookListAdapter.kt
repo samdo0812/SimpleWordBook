@@ -54,7 +54,7 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
         val viewHolder = ViewHolder(v)
 
 
-        viewHolder.wordBookBtn.setOnClickListener {
+        viewHolder.wordBookTitle.setOnClickListener {
 
 
             val dialogView = LayoutInflater.from(parent.context).inflate(R.layout.dialog_wordlist_click, parent, false)
@@ -123,14 +123,15 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //holder.worBookBtn.text = viewData[position].name
-        holder.wordBookBtn.text = viewData[position].name
-        holder.wordBookBG.setBackgroundResource(bg[position % 4])
+        holder.wordBookTitle.text = viewData[position].name
+        //holder.wordBookBG.setBackgroundResource(bg[position % 4])
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         //val worBookBtn: Button = v.button_wordBook
         val wordBookBtn = v.button_wordBook
-        val wordBookBG = v.wordbook_bg
+        val wordBookTitle = v.button_wordBookTitle
+        //val wordBookBG = v.wordbook_bg
 
     }
 

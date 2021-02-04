@@ -37,12 +37,13 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
 
 
         //viewManager = GridLayoutManager(activity,2)
+        //viewManager = LinearLayoutManager(activity)
         //viewManager = SkidRightLayoutManager(5F, 1F)
 
         val linearLayoutManager = ZoomRecyclerLayout(view.context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         //linearLayoutManager.reverseLayout = true
-        //linearLayoutManager.stackFromEnd = true
+        linearLayoutManager.stackFromEnd = true
         viewManager = linearLayoutManager
 
       //  val content = wordbooklist_title.text.toString()

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.WordBookList_Frag">
 <LinearLayout
+    android:id="@+id/wordbooklist_text"
+    app:layout_constraintTop_toTopOf="parent"
     android:orientation="vertical"
     android:layout_margin="30dp"
     android:layout_width="match_parent"
@@ -24,9 +27,10 @@
 
 </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/wordbooklist_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview_wordList"/>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

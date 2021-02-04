@@ -8,11 +8,12 @@
     tools:context=".activity.MainActivity"
     android:id="@+id/activity_main">
 
+
     <LinearLayout
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
@@ -22,21 +23,10 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:id="@+id/viewPager2_main"/>
 
-<!--        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-        </com.google.android.gms.ads.AdView>-->
-    </LinearLayout>
+  </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:src="@drawable/ic_baseline_add_24"

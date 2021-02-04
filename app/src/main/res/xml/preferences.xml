@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="Functions"
+        android:title="Setting"
         app:iconSpaceReserved="false">
     <SwitchPreference
-        android:title="스위치"
+        android:title="알림 설정"
         />
     <ListPreference
         android:key="language_tts"
-        android:title="언어설정"
+        android:title="음성언어 설정"
         android:entries="@array/language_tts"
         android:entryValues="@array/language_tts"
         />
     </PreferenceCategory>
-
+    <PreferenceCategory
+        android:title="Feedback / Support"
+        app:iconSpaceReserved="false"/>
 </PreferenceScreen>
