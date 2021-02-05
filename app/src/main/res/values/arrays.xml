@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="language_tts">
-        <item>KOREA</item>
+        <item>KOREAN</item>
         <item>ENGLISH(UK)</item>
         <item>ENGLISH(US)</item>
-        <item>JAPAN</item>
-        <item>CHINA</item>
+        <item>JAPANESE</item>
+        <item>CHINESE</item>
+    </string-array>
+    <string-array name="all_delete">
+        <item>YES</item>
+        <item>c</item>
+        <item>test</item>
     </string-array>
 </resources>

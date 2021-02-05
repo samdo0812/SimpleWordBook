@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
 
     lateinit var recyclerView: RecyclerView
     lateinit var wordBookListAdapter: WordBookListAdapter
-    lateinit var viewManager:RecyclerView.LayoutManager
+    lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +31,7 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
     ): View? {
         val view = inflater.inflate(R.layout.fragment_word_book_list_, container, false)
 
-        wordBookListAdapter = WordBookListAdapter(activity,this)
+        wordBookListAdapter = WordBookListAdapter(activity, this)
         wordBookViewModel.wordBookList.observe(this, Observer {
             wordBookListAdapter.setWordBook(it)
         })
@@ -46,7 +47,7 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
         linearLayoutManager.stackFromEnd = true
         viewManager = linearLayoutManager
 
-      //  val content = wordbooklist_title.text.toString()
+        //  val content = wordbooklist_title.text.toString()
 
 
         recyclerView = view.recyclerview_wordList.apply {
@@ -55,10 +56,20 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
             layoutManager = viewManager
             //addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         }
-
-
-
-
+       //delete()
         return view
     }
+
+/*    fun delete() {
+
+
+        val alldelete = PreferenceManager.getDefaultSharedPreferences(context)
+        val deleteFlg = alldelete.getBoolean("alldelete", true)
+
+        if (deleteFlg) {
+            wordBookViewModel.deleteAll()
+        } else {
+
+        }
+    }*/
 }

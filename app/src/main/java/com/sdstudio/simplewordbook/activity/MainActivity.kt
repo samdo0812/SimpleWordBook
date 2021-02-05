@@ -123,7 +123,8 @@ class MainActivity : AppCompatActivity() {
         val adView = AdView(this)
         adView.adSize = AdSize.SMART_BANNER
 
-
     }
+
+
 
 }

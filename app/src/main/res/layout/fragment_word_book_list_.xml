@@ -26,11 +26,16 @@
         android:text="@string/wordlist_title_sub"/>
 
 </LinearLayout>
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@+id/wordbooklist_text"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toBottomOf="@id/wordbooklist_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview_wordList"/>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

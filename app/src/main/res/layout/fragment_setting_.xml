@@ -3,30 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".fragment.Setting_Frag">
 
-    <LinearLayout
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clay"
         android:orientation="vertical"
-        android:layout_margin="35dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <FrameLayout
+            app:layout_constraintTop_toTopOf="@id/clay"
             android:id="@+id/setting_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </FrameLayout>
-        <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="sdstudioFAQ@gmail.com"
-            android:textColor="#000000">
-
-        </TextView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

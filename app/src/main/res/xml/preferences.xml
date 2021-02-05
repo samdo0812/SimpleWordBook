@@ -5,17 +5,34 @@
     <PreferenceCategory
         android:title="Setting"
         app:iconSpaceReserved="false">
-    <SwitchPreference
-        android:title="알림 설정"
-        />
-    <ListPreference
-        android:key="language_tts"
-        android:title="음성언어 설정"
-        android:entries="@array/language_tts"
-        android:entryValues="@array/language_tts"
-        />
+     <!--   <SwitchPreference android:title="알림 설정" />-->
+        <ListPreference
+            android:entries="@array/language_tts"
+            android:entryValues="@array/language_tts"
+            android:key="language_tts"
+            android:title="Voice"
+            android:summary="You can hear voices in the language of the selected country."/>
+<!--       <DropDownPreference
+            android:entries="@array/all_delete"
+            android:entryValues="@array/all_delete"
+            android:summary="Delete all data in this app"
+            android:title="Delete all data"
+            android:key="alldelete"/>-->
+        <Preference
+            android:title="IMPORT / EXPORT"
+            android:summary="Services in Preparation"
+            android:selectable="false"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Feedback / Support"
-        app:iconSpaceReserved="false"/>
+        android:title="Application"
+        app:iconSpaceReserved="false" >
+        <Preference
+            android:title="Version"
+            android:summary="1.0.0"/>
+        <Preference
+            android:key="feedback"
+            android:title="Feedback"
+            android:summary="sdstdudioFAQ@gmail.com"
+            android:defaultValue="sdstudioFAQ@gmail.com"/>
+    </PreferenceCategory>
 </PreferenceScreen>

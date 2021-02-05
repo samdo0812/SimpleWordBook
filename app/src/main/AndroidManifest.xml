@@ -14,12 +14,21 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        <activity android:name=".activity.WorddetailActivity"></activity>
-        <activity android:name=".activity.WordPlayActivity" />
-        <activity android:name=".activity.WordListActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.WorddetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WordPlayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WordListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -99,14 +99,14 @@ class WordListActivity : AppCompatActivity() {
 
     fun setting(){
         val t =PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val ttsFlg = t.getString("language_tts","")
+        val ttsFlg = t.getString("language_tts","KOREAN")
         Log.d("setting",ttsFlg)
         when(ttsFlg){
-            "KOREA"->{ ttsIntFlg = 0 }
+            "KOREAN"->{ ttsIntFlg = 0 }
             "ENGLISH(UK)"->{ ttsIntFlg = 1}
             "ENGLISH(US)"->{ttsIntFlg = 2}
-            "JAPAN"->{ttsIntFlg = 3}
-            "CHINA"->{ttsIntFlg = 4}
+            "JAPANESE"->{ttsIntFlg = 3}
+            "CHINESE"->{ttsIntFlg = 4}
         }
     }
 
