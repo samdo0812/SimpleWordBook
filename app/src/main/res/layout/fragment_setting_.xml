@@ -4,12 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#ffffff"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragment.Setting_Frag">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+  <!-- <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clay"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,5 +20,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="IMPORT / EXPORT"
+            android:id="@+id/data_imexport"
+            android:background="@drawable/bolder_wordbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            />
+        <Button
+            android:text="DELETE ALL DATA "
+            android:id="@+id/alldelete"
+            android:background="@drawable/bolder_wordbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+
+        <Button
+            android:text="FeedBack"
+            android:id="@+id/feedback"
+            android:background="@drawable/bolder_wordbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:text="Version 1.0.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 </LinearLayout>

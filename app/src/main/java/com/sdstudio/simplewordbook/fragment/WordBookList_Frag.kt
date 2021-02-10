@@ -6,18 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.WordBookListAdapter
 import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
-import kotlinx.android.synthetic.main.fragment_word_book_list_.*
 import kotlinx.android.synthetic.main.fragment_word_book_list_.view.*
-import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
 
 class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment() {
 
@@ -37,15 +31,17 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
         })
 
 
-        //viewManager = GridLayoutManager(activity,2)
+        viewManager = GridLayoutManager(activity,2)
         //viewManager = LinearLayoutManager(activity)
         //viewManager = SkidRightLayoutManager(5F, 1F)
 
-        val linearLayoutManager = ZoomRecyclerLayout(view.context)
+
+      /*  val linearLayoutManager = ZoomRecyclerLayout(view.context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        //linearLayoutManager.reverseLayout = true
+        linearLayoutManager.reverseLayout = true
         linearLayoutManager.stackFromEnd = true
-        viewManager = linearLayoutManager
+
+        viewManager = linearLayoutManager*/
 
         //  val content = wordbooklist_title.text.toString()
 
@@ -60,16 +56,4 @@ class WordBookList_Frag(val wordBookViewModel: WordBookListViewModel) : Fragment
         return view
     }
 
-/*    fun delete() {
-
-
-        val alldelete = PreferenceManager.getDefaultSharedPreferences(context)
-        val deleteFlg = alldelete.getBoolean("alldelete", true)
-
-        if (deleteFlg) {
-            wordBookViewModel.deleteAll()
-        } else {
-
-        }
-    }*/
 }

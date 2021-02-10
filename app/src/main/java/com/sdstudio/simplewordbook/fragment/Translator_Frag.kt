@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,23 +11,18 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.awesomedialog.*
 import com.google.gson.Gson
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.api.PapagoDTO
-import com.sdstudio.simplewordbook.database.WordCard
-import kotlinx.android.synthetic.main.dialog_translate.view.*
 import kotlinx.android.synthetic.main.fragment_translator_.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
-import java.lang.RuntimeException
+
 
 
 class Translator_Frag : Fragment() {

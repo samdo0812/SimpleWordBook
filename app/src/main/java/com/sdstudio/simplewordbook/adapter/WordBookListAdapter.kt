@@ -34,7 +34,7 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
 
     private var viewData = listOf<WordBook>()
     private var viewModel: WordBookListViewModel
-    var bg = arrayListOf<Int>(R.drawable.wordbook_bg_1,R.drawable.wordbook_bg_2,R.drawable.wordbook_bg_3,R.drawable.wordbook_bg_4)
+    //var bg = arrayListOf<Int>(R.drawable.wordbook_bg_1,R.drawable.wordbook_bg_2,R.drawable.wordbook_bg_3,R.drawable.wordbook_bg_4)
 
     init {
         viewModel = activity?.run {
@@ -54,19 +54,12 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
         val viewHolder = ViewHolder(v)
 
 
-        viewHolder.wordBookTitle.setOnClickListener {
+        viewHolder.wordBookBtn.setOnClickListener {
 
 
             val dialogView = LayoutInflater.from(parent.context).inflate(R.layout.dialog_wordlist_click, parent, false)
             val dialogBuilder = AlertDialog.Builder(parent.context)
             val data = viewData[viewHolder.adapterPosition]
-
-
-           // val mDialog = LayoutInflater.from(this).inflate(R.layout.dialog_new_wordbooklist, null)
-           // val mbuilder = androidx.appcompat.app.AlertDialog.Builder(this).setView(mDialog)
-            //val myAlertDialog = mbuilder.show()
-            //myAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
 
 
             dialogView.textview_name.text = data.name
@@ -128,11 +121,8 @@ class WordBookListAdapter(val activity: FragmentActivity?, val lifecycleOwner: L
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        //val worBookBtn: Button = v.button_wordBook
         val wordBookBtn = v.button_wordBook
         val wordBookTitle = v.button_wordBookTitle
-        //val wordBookBG = v.wordbook_bg
-
     }
 
     fun setWordBook(wordBookList: List<WordBook>) {

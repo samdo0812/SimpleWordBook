@@ -1,31 +1,30 @@
 package com.sdstudio.simplewordbook.adapter
 
 
+import android.content.Intent
 import android.speech.tts.TextToSpeech
 import android.util.Log
-import android.view.*
+import android.view.ContextMenu
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstudio.simplewordbook.R
-import com.sdstudio.simplewordbook.activity.WorddetailActivity
 import com.sdstudio.simplewordbook.database.WordCard
-import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
-import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
-import kotlinx.android.synthetic.main.item_wordcard.*
 import kotlinx.android.synthetic.main.item_wordcard.view.*
 import kotlinx.android.synthetic.main.item_wordplay.view.*
-import java.lang.Exception
-import java.security.acl.Owner
 import java.util.*
 
 
 //class WordCardAdapter(private val type: Int, private val update:(Boolean,Int,String,String)->Unit, private val delete:(Boolean,Int)->Unit) :
 //    RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
-class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
+class WordCardAdapter(private val type: Int) :
     RecyclerView.Adapter<WordCardAdapter.ViewHolder>() {
 
     companion object {
@@ -47,10 +46,9 @@ class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
                 .inflate(R.layout.item_wordplay, parent, false)
         }
 
-        val viewHolder = ViewHolder(v, type, ttsFlg)
+        val viewHolder = ViewHolder(v, type)
         val curView = viewHolder.cardView   //v.cardview_card
         val curText = viewHolder.textView
-        val curTts = viewHolder.ttsBtn
         when (type) {
             //터치시 단어 앞면 뒷면 회전
             0 -> {
@@ -62,10 +60,6 @@ class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
                     } else {
                         curText.text = viewData[viewHolder.adapterPosition].front
                     }
-                }
-                curTts.setOnClickListener {
-                    val tospeak = curText.text.toString()
-                    tts.speak(tospeak, TextToSpeech.QUEUE_FLUSH,null)
                 }
 
             }
@@ -93,11 +87,11 @@ class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
     }
 
 
-    class ViewHolder(v: View, type: Int, ttsFlg: Int) : RecyclerView.ViewHolder(v),
+    class ViewHolder(v: View, type: Int) : RecyclerView.ViewHolder(v),
         View.OnCreateContextMenuListener {
         lateinit var textView: TextView
         lateinit var cardView: CardView
-        lateinit var ttsBtn:ImageButton
+
 
         companion object {
             var wordCardId: Long = 0
@@ -108,30 +102,17 @@ class WordCardAdapter(private val type: Int, private var ttsFlg:Int) :
                 0 -> {  //카드 등록
                     textView = v.textview_card_text
                     cardView = v.cardview_card
-                    ttsBtn = v.tts
                     cardView.setOnCreateContextMenuListener(this)
 
                 }
                 1 -> {  //카드 플레이
                     textView = v.textview_play_card_text
                     cardView = v.cardview_play_card
-                    ttsBtn = v.tts_no
+
                 }
             }
-            Log.d("setting",ttsFlg.toString())
-            tts = TextToSpeech(v.context, TextToSpeech.OnInitListener {
-                if (it != TextToSpeech.ERROR) {
-                    if (ttsFlg == 0){
-                        tts.language = Locale.KOREAN
-                    }
-                    else if (ttsFlg == 1){
-                        tts.language = Locale.UK
-                    }
-                    else{
-                        tts.language = Locale.UK
-                    }
-                }
-            })
+        textView.fontFeatureSettings
+
         }
 
 

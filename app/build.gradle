@@ -35,7 +35,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
         //리사이클러뷰
         //maven { url 'https://jitpack.io' }
-        maven { url 'https://jitpack.io' }
+        //maven { url 'https://jitpack.io' }
 
         google()
     }
@@ -97,5 +97,8 @@ dependencies {
 
     //admob
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+    //layout
+    /*implementation'com.ssomai:android.scalablelayout:2.1.6'*/
 
 }

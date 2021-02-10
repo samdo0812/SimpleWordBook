@@ -3,17 +3,15 @@ package com.sdstudio.simplewordbook.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
-import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstudio.simplewordbook.R
@@ -21,7 +19,6 @@ import com.sdstudio.simplewordbook.adapter.WordCardAdapter
 import com.sdstudio.simplewordbook.database.WordCard
 import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
 import kotlinx.android.synthetic.main.activity_word_list.*
-import kotlinx.android.synthetic.main.item_wordcard.*
 
 
 class WordListActivity : AppCompatActivity() {
@@ -31,13 +28,14 @@ class WordListActivity : AppCompatActivity() {
     private var wordBookId: Int = 0
     private lateinit var wordCardAdapter: WordCardAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
+
     //var wordCardId: Long = 0
-    var ttsIntFlg:Int = 0
+    var ttsIntFlg: Int = 0
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-         menuInflater.inflate(R.menu.menu_card_list_add, menu)
-         return true
-     }
+        menuInflater.inflate(R.menu.menu_card_list_add, menu)
+        return true
+    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -46,7 +44,7 @@ class WordListActivity : AppCompatActivity() {
                 finish()
                 return true
             }
-            R.id.menu_card_list_update ->{
+            R.id.menu_card_list_update -> {
                 var intent = Intent(applicationContext, WorddetailActivity::class.java)
                 intent.putExtra("wordBookId", wordBookId)
                 startActivityForResult(intent, 100)
@@ -64,7 +62,7 @@ class WordListActivity : AppCompatActivity() {
         supportActionBar?.title = "My Word"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back_left)
-       // fab_card.attachToRecyclerView(wordcard_list)
+        // fab_card.attachToRecyclerView(wordcard_list)
 
 
         setting()
@@ -79,7 +77,7 @@ class WordListActivity : AppCompatActivity() {
         })
             .get(WordCardViewModel::class.java)
 
-        wordCardAdapter = WordCardAdapter(0,ttsIntFlg)
+        wordCardAdapter = WordCardAdapter(0)
         viewManager = LinearLayoutManager(applicationContext)
 
         wordCardViewModel.cardList.observe(this,
@@ -97,17 +95,38 @@ class WordListActivity : AppCompatActivity() {
 
     }
 
-    fun setting(){
-        val t =PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val ttsFlg = t.getString("language_tts","KOREAN")
-        Log.d("setting",ttsFlg)
-        when(ttsFlg){
-            "KOREAN"->{ ttsIntFlg = 0 }
-            "ENGLISH(UK)"->{ ttsIntFlg = 1}
-            "ENGLISH(US)"->{ttsIntFlg = 2}
-            "JAPANESE"->{ttsIntFlg = 3}
-            "CHINESE"->{ttsIntFlg = 4}
-        }
+    fun setting() {
+        val t = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val ttsFlg = t.getString("language_tts", "KOREAN")
+
+            when (ttsFlg) {
+                "KOREAN" -> {
+                    ttsIntFlg = 0
+                }
+                "ENGLISH(UK)" -> {
+                    ttsIntFlg = 1
+                }
+                "ENGLISH(US)" -> {
+                    ttsIntFlg = 2
+                }
+                "JAPANESE" -> {
+                    ttsIntFlg = 3
+                }
+                "CHINESE" -> {
+                    ttsIntFlg = 4
+                }
+            }
+
+        Log.d("sss",TextToSpeech.Engine.CHECK_VOICE_DATA_FAIL.toString())
+
+
+
+           /* val installTTSIntent = Intent()
+            installTTSIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+            startActivity(installTTSIntent)*/
+
+
+
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {

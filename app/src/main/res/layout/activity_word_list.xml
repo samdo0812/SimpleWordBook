@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        style="@style/TextViewStyle"
         android:id="@+id/toolbar_card_list"
         android:background="#000000"
         app:titleTextColor="#ffffff"

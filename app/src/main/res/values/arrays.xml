@@ -12,4 +12,9 @@
         <item>c</item>
         <item>test</item>
     </string-array>
+
+    <string-array name="choose">
+        <item>IMPORT</item>
+        <item>EXPORT</item>
+    </string-array>
 </resources>

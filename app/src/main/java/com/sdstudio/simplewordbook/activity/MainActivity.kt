@@ -1,16 +1,11 @@
 package com.sdstudio.simplewordbook.activity
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
-import android.view.Window
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -28,7 +23,6 @@ import com.sdstudio.simplewordbook.viewmodel.WordBookListViewModel
 import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_new_wordbooklist.view.*
-import kotlinx.android.synthetic.main.fragment_translator_.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
 
         viewPager2 = viewPager2_main
-        viewPager2.adapter = ViewPagerAdapter(this, wordBookListViewModel)
+        viewPager2.adapter = ViewPagerAdapter(this, wordBookListViewModel, wordCardViewModel)
 
         TabLayoutMediator(tablayout_main, viewPager2){ tab, position ->
             tab.text = tabLayoutTextArray[position]

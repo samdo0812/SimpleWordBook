@@ -51,7 +51,7 @@ class WordPlayActivity : AppCompatActivity() {
         supportActionBar?.title = wordBookName
 
         //wordCardAdapter = WordCardAdapter(seekbar_deck_play,1)
-        wordCardAdapter = WordCardAdapter(1,0)
+        wordCardAdapter = WordCardAdapter(1)
 
         wordCardViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -77,22 +77,6 @@ class WordPlayActivity : AppCompatActivity() {
             })
         }
 
- /*       //바
-        seekbar_deck_play.apply {
-            max = 0
-            setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
-                override fun onProgressChanged(
-                    seekBar: SeekBar?,
-                    progress: Int,
-                    fromUser: Boolean
-                ) {
-                    viewpager2_deck_play.currentItem = progress
-                }
-
-                override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-                override fun onStopTrackingTouch(seekBar: SeekBar?) {}
-            })
-        }*/
 
         //왼쪽버튼
         button_bottom_left.setOnClickListener {
