@@ -93,17 +93,6 @@ class MainActivity : AppCompatActivity() {
             mDialog.button_cancle.setOnClickListener {
                 myAlertDialog.dismiss()
             }
-
-            /*dialog.setView(dialogView).setPositiveButton("OK") {
-                    dialog,i->
-                val wordBook = WordBook(0,
-                    dialogView.edittext_new_name.text.toString(),
-                    dialogView.edittext_new_desc.text.toString(),0)
-                wordBookListViewModel.insert(wordBook)
-
-            }.setNegativeButton("Cancel"){
-                    dialog,i->
-            }.show()*/
         }
 
 

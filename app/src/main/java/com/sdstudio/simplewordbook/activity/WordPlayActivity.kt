@@ -10,11 +10,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.sdstudio.simplewordbook.R
 import com.sdstudio.simplewordbook.adapter.WordCardAdapter
 import com.sdstudio.simplewordbook.viewmodel.WordCardViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_word_list.*
 import kotlinx.android.synthetic.main.activity_word_play.*
+import kotlinx.android.synthetic.main.activity_word_play.banner
 import kotlinx.android.synthetic.main.activity_word_play.view.*
 import kotlinx.android.synthetic.main.activity_word_play.viewpager2_deck_play
 import java.nio.file.Files.delete
@@ -122,6 +128,14 @@ class WordPlayActivity : AppCompatActivity() {
         button_shuffle.setOnClickListener {
             wordCardAdapter.suffleCards()
         }
+
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        //광고로드
+        banner.loadAd(adRequest)
+
+        val adView = AdView(this)
+        adView.adSize = AdSize.SMART_BANNER
 
     }
 }

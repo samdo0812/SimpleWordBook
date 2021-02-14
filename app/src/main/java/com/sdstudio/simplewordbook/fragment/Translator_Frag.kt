@@ -293,8 +293,8 @@ class Translator_Frag : Fragment() {
 
                     val body = RequestBody.create(JSON, json.toString())
                     val request = Request.Builder()
-                        .header("X-Naver-Client-Id", "value")
-                        .addHeader("X-Naver-Client-Secret", "value")
+                        .header("X-Naver-Client-Id", getString(R.string.papagao_client_id) )
+                        .addHeader("X-Naver-Client-Secret", getString(R.string.papago_client_secret))
                         .url(url)
                         .post(body)
                         .build()

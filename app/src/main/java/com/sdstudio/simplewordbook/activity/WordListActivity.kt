@@ -65,7 +65,7 @@ class WordListActivity : AppCompatActivity() {
         // fab_card.attachToRecyclerView(wordcard_list)
 
 
-        setting()
+
         wordBookId = intent.getIntExtra("wordBookId", 0)
         val wordBookName = intent.getStringExtra("wordBookName")
         supportActionBar?.title = wordBookName
@@ -95,30 +95,6 @@ class WordListActivity : AppCompatActivity() {
 
     }
 
-    fun setting() {
-        val t = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        val ttsFlg = t.getString("language_tts", "KOREAN")
-
-            when (ttsFlg) {
-                "KOREAN" -> {
-                    ttsIntFlg = 0
-                }
-                "ENGLISH(UK)" -> {
-                    ttsIntFlg = 1
-                }
-                "ENGLISH(US)" -> {
-                    ttsIntFlg = 2
-                }
-                "JAPANESE" -> {
-                    ttsIntFlg = 3
-                }
-                "CHINESE" -> {
-                    ttsIntFlg = 4
-                }
-            }
-
-        Log.d("sss",TextToSpeech.Engine.CHECK_VOICE_DATA_FAIL.toString())
-
 
 
            /* val installTTSIntent = Intent()
@@ -127,7 +103,7 @@ class WordListActivity : AppCompatActivity() {
 
 
 
-    }
+
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
 

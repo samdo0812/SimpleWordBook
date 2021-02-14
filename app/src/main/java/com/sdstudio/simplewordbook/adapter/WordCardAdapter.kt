@@ -29,7 +29,6 @@ class WordCardAdapter(private val type: Int) :
 
     companion object {
         var viewData: List<WordCard> = listOf()
-        lateinit var tts: TextToSpeech
     }
 
     var flipSet: BitSet = BitSet()  //BitSet Boolean보다 적은 메모리 차지

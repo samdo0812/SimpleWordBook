@@ -66,12 +66,14 @@
         <item>Korean</item>
     </string-array>
 
-    <string name="play_front">전체 앞면</string>
-    <string name="play_back">전체 뒷면</string>
+    <string name="play_front">All Front</string>
+    <string name="play_back">All Back</string>
     <string name="play_shuffle">shuffle</string>
     <string name="play_random">random</string>
     <string name="wordlist_title"><b>Create your word book!</b></string>
     <string name="wordlist_title_sub"><i>Slide and choose your word book.</i></string>
     <string name="worddetail_title"><b>You can add or modify word.</b></string>
+
+    
 
 </resources>

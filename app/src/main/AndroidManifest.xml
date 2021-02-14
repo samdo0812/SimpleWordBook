@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/icon_2_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ImportActivity"></activity>
-        <activity android:name=".activity.ImexportActivity" />
+        <activity android:name=".activity.ImexportActivity"></activity>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +22,11 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
-
+            android:value="@string/addmob_id"/>
         <activity
             android:name=".activity.WorddetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
              />
         <activity
             android:name=".activity.WordPlayActivity"
